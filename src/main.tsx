@@ -6,9 +6,9 @@ import './index.scss';
 import App from './App';
 import Header from './Header';
 import Typeahead from './Typeahead/Typeahead';
-import DataTable from './DataTable/Datatable';
+// import DataTable from './DataTable/Datatable';
 import { NavLink } from 'react-router-dom';
-import GridLightBox from './GridLight/GridLight';
+// import GridLightBox from './GridLight/GridLight';
 
 const queryClient = new QueryClient();
 
@@ -42,8 +42,8 @@ const router = createBrowserRouter([
       { path: '/', element: <Root /> },
       { path: '/typeahead', element: <Typeahead /> },
       { path: '/todo', element: <App /> },
-      { path: '/datatable', element: <DataTable /> },
-      { path: '/grid-light', element: <GridLightBox /> },
+      // { path: '/datatable', element: <DataTable /> },
+      // { path: '/grid-light', element: <GridLightBox /> },
     ],
   },
 ]);
