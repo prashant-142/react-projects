@@ -26,9 +26,11 @@ const Typeahead = () => {
 
 
   useEffect( () => {
+    const controller = new AbortController();
+
     const getData = async () => {
       try {
-        const reponse = await fetch(`${API}${debouncedQuery}`);
+        const reponse = await fetch(`${API}${debouncedQuery}`, controller.signal);
         const data = await(reponse.json());
         setResults(data);
       }
@@ -38,6 +40,8 @@ const Typeahead = () => {
     }
 
     getData();
+
+    return () => controller.abort
   }, [debouncedQuery])
 
   const handleClick = (event) => {
@@ -48,7 +52,6 @@ const Typeahead = () => {
     <>
     <input placeholder="search" onChange={(e) => {handleClick(e)}} />
     <ul>
-      <li>{query}</li>
       { results.map( (result, idx) => <li>{result.name}</li>)}
     </ul>
     </>
